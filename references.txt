@@ -1,0 +1,2 @@
+// https://user-cube.medium.com/authentication-in-nestjs-postgresql-and-jwt-a5cc5261afb8
+// https://blog.logrocket.com/how-to-build-a-graphql-api-with-nestjs/
