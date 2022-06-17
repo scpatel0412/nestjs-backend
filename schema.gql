@@ -9,12 +9,22 @@ type CreatePokemonDto {
   pokedex: Int!
 }
 
+type PostCommentEntity {
+  id: String!
+  userId: String!
+  userName: String!
+  comment: String!
+  posts: CelestialPost
+  postsId: String!
+}
+
 type CelestialPost {
   id: String!
   userId: String!
   description: String!
   imageLink: String!
   users: UserEntity
+  comments: [PostCommentEntity!]
 }
 
 type UserEntity {
@@ -64,6 +74,8 @@ type Query {
   getUser(id: String!): UserEntity!
   getPosts: [CelestialPost!]!
   getPost(id: String!): CelestialPostModel!
+  getComments: [PostCommentEntity!]!
+  getComment(id: String!): PostCommentEntity!
 }
 
 type Mutation {
@@ -77,6 +89,9 @@ type Mutation {
   createPost(celestialPostData: CreateCelestialPostDto!): CelestialPostModel!
   deletePost(id: String!): CelestialPostModel!
   updatePost(id: String!, updateCelestialPost: CreateCelestialPostDto!): CelestialPostModel!
+  createComment(createCommentInput: CreatePostCommentDto!): PostCommentEntity!
+  updateComment(id: String!, updateCommentInput: UpdatePostCommentDto!): PostCommentEntity!
+  deleteComment(id: String!): PostCommentEntity!
 }
 
 input UpdatePokemonInput {
@@ -113,4 +128,19 @@ input CreateCelestialPostDto {
   userId: String!
   description: String!
   imageLink: String!
+}
+
+input CreatePostCommentDto {
+  userId: String!
+  userName: String!
+  comment: String!
+  postsId: String!
+}
+
+input UpdatePostCommentDto {
+  userId: String
+  userName: String
+  comment: String
+  postsId: String
+  id: String!
 }

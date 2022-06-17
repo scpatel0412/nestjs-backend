@@ -9,6 +9,7 @@ import { ApolloDriverConfig, ApolloDriver } from '@nestjs/apollo';
 import { UserModule } from './user/user.module';
 import { AuthModule } from './auth/auth.module';
 import { CelestialPostModule } from './celestial-post/celestial-post.module';
+import { PostCommentsModule } from './post-comments/post-comments.module';
 
 @Module({
   imports: [
@@ -50,6 +51,7 @@ import { CelestialPostModule } from './celestial-post/celestial-post.module';
     UserModule,
     AuthModule,
     CelestialPostModule,
+    PostCommentsModule,
   ],
   controllers: [AppController],
   providers: [AppService],
