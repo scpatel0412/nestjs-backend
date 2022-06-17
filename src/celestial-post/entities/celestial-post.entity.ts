@@ -1,5 +1,6 @@
 import { ObjectType, Field, Int } from '@nestjs/graphql';
 import { PostCommentEntity } from 'src/post-comments/entities/post-comment.entity';
+import { PostLikeEntity } from 'src/post-likes/entities/post-like.entity';
 import { UserEntity } from 'src/user/user.entity';
 import {
   Column,
@@ -46,4 +47,8 @@ export class CelestialPost {
   )
   @Field(() => [PostCommentEntity], { nullable: true })
   comments: PostCommentEntity[];
+
+  @OneToMany(() => PostLikeEntity, (comments: PostLikeEntity) => comments.posts)
+  @Field(() => [PostLikeEntity], { nullable: true })
+  likes: PostLikeEntity[];
 }

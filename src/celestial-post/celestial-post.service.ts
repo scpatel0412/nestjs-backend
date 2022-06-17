@@ -15,7 +15,7 @@ export class CelestialPostService {
 
   async getPosts(): Promise<Array<CelestialPost>> {
     const post = await this.celestialPostRepository.find({
-      relations: ['users', 'comments'],
+      relations: ['users', 'comments', 'likes'],
     });
     return post;
   }
@@ -35,7 +35,7 @@ export class CelestialPostService {
   async getPost(id: any): Promise<CelestialPost> {
     const post = await this.celestialPostRepository.findOne({
       where: { id },
-      relations: ['users', 'comments'],
+      relations: ['users', 'comments', 'likes'],
     });
     if (!post) {
       throw new NotFoundException(`Post with ${id} with cannot be found`);
@@ -58,6 +58,7 @@ export class CelestialPostService {
         updatedAt: new Date(0),
         users: undefined,
         comments: null,
+        likes: null,
       };
     }
   }
