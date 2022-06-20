@@ -4,19 +4,25 @@ import { CreatePokemonDto } from './dto/add-pokemon.dto';
 import { PokemonService } from './pokemon.service';
 import { inputPokemon } from './input/pokemon.input';
 import { UpdatePokemonInput } from './update-pokemon.input';
+import { GqlAuthId } from 'src/auth/decorators/gql-auth-id.decorator';
+import { AllowUnauthorized } from 'src/auth/decorators/allow-unauthorized.decorator';
 
 @Resolver((of) => PokemonEntity)
 export class PokemonResolver {
   constructor(private readonly pokemonService: PokemonService) {}
 
+  @AllowUnauthorized()
   @Query((returns) => [CreatePokemonDto])
   async pokemon() {
     return this.pokemonService.getPokemons();
   }
 
   @Query((returns) => CreatePokemonDto)
-  async getPokemon(@Args('id', { type: () => String }) id: string) {
-    return this.pokemonService.getPokemon(id);
+  async getPokemon(
+    @GqlAuthId() userId: string,
+    @Args('id', { type: () => String }) id: string,
+  ) {
+    return this.pokemonService.getPokemon(userId, id);
   }
 
   @Mutation(() => CreatePokemonDto)
