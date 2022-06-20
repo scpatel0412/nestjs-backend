@@ -5,11 +5,12 @@ import { CreateUserDto } from './dto/create-user.input';
 import { UpdateUserInput } from './dto/update-user.input';
 import { userInput } from './input/user.input';
 import { UserAuthModel } from './dto/user-auth.model';
+import { AllowUnauthorized } from 'src/auth/decorators/allow-unauthorized.decorator';
 
 @Resolver((of) => UserEntity)
 export class UserResolver {
   constructor(private readonly userService: UserService) {}
-
+  @AllowUnauthorized()
   @Mutation((returns) => CreateUserDto)
   createUser(@Args('createUserInput') createUserInput: userInput) {
     return this.userService.createUser(createUserInput);
@@ -37,7 +38,7 @@ export class UserResolver {
   deleteUser(@Args('id') id: string) {
     return this.userService.removeUser(id);
   }
-
+  @AllowUnauthorized()
   @Mutation((returns) => UserAuthModel)
   userSignIn(
     @Args('email') email: string,

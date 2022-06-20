@@ -43,10 +43,15 @@ import { PostLikesModule } from './post-likes/post-likes.module';
       synchronize: true,
     }),
     GraphQLModule.forRoot<ApolloDriverConfig>({
+      context: ({ req }) => ({ req }),
       autoSchemaFile: 'schema.gql',
       playground: true,
       path: '/',
       driver: ApolloDriver,
+      cors: {
+        credentials: true,
+        origin: true,
+      },
     }),
     PokemonModule,
     UserModule,

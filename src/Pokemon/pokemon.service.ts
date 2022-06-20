@@ -22,7 +22,7 @@ export class PokemonService {
 
     return pokemon;
   }
-  async getPokemon(id: any): Promise<PokemonEntity> {
+  async getPokemon(userId: string, id: any): Promise<PokemonEntity> {
     const user = await this.PokemonRepository.findOne({ where: { id } });
     if (!user) {
       throw new NotFoundException(`${id} of this pokemon is not found`);
