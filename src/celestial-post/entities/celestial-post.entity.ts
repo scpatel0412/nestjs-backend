@@ -31,6 +31,10 @@ export class CelestialPost {
   @Column('varchar')
   imageLink: string;
 
+  @Field(() => String, { nullable: true })
+  @Column('varchar', { unique: true })
+  slug: string;
+
   @CreateDateColumn()
   createdAt: Date;
 

@@ -23,8 +23,10 @@ export class CelestialPostService {
   async createPost(
     celestialPostData: CreateCelestialPostDto,
   ): Promise<CelestialPost> {
+    const dateandtime = Date.now();
     const post = new CelestialPost();
     post.userId = celestialPostData.userId;
+    post.slug = `${celestialPostData.slug}_${dateandtime}`;
     post.description = celestialPostData.description;
     post.imageLink = celestialPostData.imageLink;
 
@@ -54,6 +56,7 @@ export class CelestialPostService {
         userId: '',
         imageLink: '',
         description: '',
+        slug: '',
         createdAt: new Date(0),
         updatedAt: new Date(0),
         users: undefined,
@@ -72,6 +75,7 @@ export class CelestialPostService {
       ...updateCelestialPost,
     });
     post.userId = updateCelestialPost.userId;
+    post.slug = updateCelestialPost.slug;
     post.description = updateCelestialPost.description;
     post.imageLink = updateCelestialPost.imageLink;
 

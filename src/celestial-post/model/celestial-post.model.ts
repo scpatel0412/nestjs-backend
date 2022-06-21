@@ -14,6 +14,9 @@ export class CelestialPostModel {
   @Field(() => String)
   imageLink: string;
 
+  @Field(() => String)
+  slug: string;
+
   @Field(() => Date)
   createdAt: Date;
 

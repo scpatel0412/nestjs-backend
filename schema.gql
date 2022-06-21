@@ -31,6 +31,7 @@ type CelestialPost {
   userId: String!
   description: String!
   imageLink: String!
+  slug: String
   users: UserEntity
   comments: [PostCommentEntity!]
   likes: [PostLikeEntity!]
@@ -67,6 +68,7 @@ type CelestialPostModel {
   userId: String!
   description: String!
   imageLink: String!
+  slug: String!
   createdAt: DateTime!
   updatedAt: DateTime!
 }
@@ -140,6 +142,7 @@ input CreateCelestialPostDto {
   userId: String!
   description: String!
   imageLink: String!
+  slug: String!
 }
 
 input CreatePostCommentDto {

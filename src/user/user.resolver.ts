@@ -16,6 +16,7 @@ export class UserResolver {
     return this.userService.createUser(createUserInput);
   }
 
+  @AllowUnauthorized()
   @Query((returns) => [UserEntity])
   getUsers() {
     return this.userService.getUsers();
