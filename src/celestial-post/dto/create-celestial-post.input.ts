@@ -10,4 +10,7 @@ export class CreateCelestialPostDto {
 
   @Field(() => String)
   imageLink: string;
+
+  @Field(() => String)
+  slug: string;
 }
