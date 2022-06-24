@@ -11,6 +11,7 @@ import { AuthModule } from './auth/auth.module';
 import { CelestialPostModule } from './celestial-post/celestial-post.module';
 import { PostCommentsModule } from './post-comments/post-comments.module';
 import { PostLikesModule } from './post-likes/post-likes.module';
+import { HttpModule } from '@nestjs/axios';
 
 @Module({
   imports: [
@@ -59,6 +60,7 @@ import { PostLikesModule } from './post-likes/post-likes.module';
     CelestialPostModule,
     PostCommentsModule,
     PostLikesModule,
+    HttpModule,
   ],
   controllers: [AppController],
   providers: [AppService],

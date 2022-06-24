@@ -12,7 +12,7 @@ import { CelestialPost } from 'src/celestial-post/entities/celestial-post.entity
 @Entity('postLikes')
 @ObjectType()
 export class PostLikeEntity {
-  @PrimaryGeneratedColumn()
+  @PrimaryGeneratedColumn('uuid')
   @Field(() => String)
   id: string;
 
