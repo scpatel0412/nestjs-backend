@@ -47,7 +47,7 @@ import { HttpModule } from '@nestjs/axios';
       context: ({ req }) => ({ req }),
       autoSchemaFile: 'schema.gql',
       playground: true,
-      path: '/',
+      path: '/graphql',
       driver: ApolloDriver,
       cors: {
         credentials: true,
