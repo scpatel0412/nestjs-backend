@@ -21,4 +21,9 @@ export class AppService {
       .then((res) => res.data)
       .catch((err) => console.log(err));
   }
+  getWelcomePage(): string {
+    const imag1 =
+      'https://unsplash.com/photos/RN6ts8IZ4_0/download?ixid=MnwxMjA3fDB8MXxzZWFyY2h8Nnx8YmVhY2h8ZW58MHx8fHwxNjYwODE5MDA0&force=true';
+    return `<!DOCTYPE html><html><head><title>Nebula</title></head><body style="background-image: url(${imag1}); background-size:cover; color:white; hieght=100vh; width=100vw; align-items:center; text-align:center"><h1 style="color:white">Welcome to Our backend</h1><p>Take some chill time and see beach......</p><p>Braise yourself up .....</p></body></html>`;
+  }
 }

@@ -8,9 +8,16 @@ export class AppController {
 
   @AllowUnauthorized()
   @Get()
+  getWelcomePage() {
+    return this.appService.getWelcomePage();
+  }
+
+  @AllowUnauthorized()
+  @Get('/top-10')
   getHello(): any {
     return this.appService.getHello();
   }
+
   @Get('/random')
   getRandom(): any {
     return this.appService.getRandom();
