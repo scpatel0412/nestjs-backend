@@ -16,7 +16,7 @@ export class AuthService {
   }
 
   async validateAccessToken(token): Promise<any> {
-    return localStorage.getItem('token') === token;
+    return token ? true : false;
   }
 
   async deleteAccessToken(): Promise<any> {
@@ -29,6 +29,6 @@ export class AuthService {
 
   async validateRestoreToken(token: any): Promise<any> {
     const payload = this.jwtService.decode(token);
-    return payload;
+    return payload ? true : false;
   }
 }
