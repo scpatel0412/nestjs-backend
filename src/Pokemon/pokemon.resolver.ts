@@ -11,12 +11,13 @@ import { AllowUnauthorized } from 'src/auth/decorators/allow-unauthorized.decora
 export class PokemonResolver {
   constructor(private readonly pokemonService: PokemonService) {}
 
-  @AllowUnauthorized()
+  // @AllowUnauthorized()
   @Query((returns) => [CreatePokemonDto])
   async pokemon() {
     return this.pokemonService.getPokemons();
   }
 
+  @AllowUnauthorized()
   @Query((returns) => CreatePokemonDto)
   async getPokemon(
     @GqlAuthId() userId: string,

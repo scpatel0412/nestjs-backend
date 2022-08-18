@@ -39,6 +39,7 @@ export class UserResolver {
   deleteUser(@Args('id') id: string) {
     return this.userService.removeUser(id);
   }
+
   @AllowUnauthorized()
   @Mutation((returns) => UserAuthModel)
   userSignIn(
